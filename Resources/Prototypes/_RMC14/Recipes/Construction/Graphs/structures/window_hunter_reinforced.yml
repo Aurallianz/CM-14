@@ -1,12 +1,12 @@
 - type: constructionGraph
   parent: RMC
-  id: RMCWindowSolarisReinforced
+  id: RMCWindowHunterReinforced
   start: start
   graph:
   - node: start # not currently buildable
 
-  - node: windowFrameSolarisReinforced
-    entity: RMCWindowFrameSolarisReinforced
+  - node: windowFrameHunterReinforced
+    entity: RMCWindowFrameHunterReinforced
     edges:
     - to: start
       completed:
@@ -17,10 +17,10 @@
       conditions:
       - !type:EntityAnchored {}
       steps:
-      - tool: Anchoring
+      - tool: Welding
         doAfter: 2
 
-    - to: windowSolarisReinforced
+    - to: windowHunterReinforced
       completed:
       - !type:SnapToGrid
         southRotation: true
@@ -31,10 +31,10 @@
         amount: 2
         doAfter: 2
 
-  - node: windowSolarisReinforced
-    entity: CMWindowSolarisReinforced
+  - node: windowHunterReinforced
+    entity: RMCHunterReinforcedWindow
     edges:
-    - to: windowFrameSolarisReinforced
+    - to: windowFrameHunterReinforced
       completed:
       - !type:SnapToGrid
         southRotation: true
