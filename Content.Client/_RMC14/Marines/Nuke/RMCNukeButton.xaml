@@ -1,0 +1,6 @@
+<nuke:RMCNukeButton
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._RMC14.Access"
+    xmlns:nuke="clr-namespace:Content.Client._RMC14.Marines.Nuke">
+    <Button Name="Button" Access="Public" StyleClasses="OpenBoth" HorizontalExpand="True" />
+</nuke:RMCNukeButton>

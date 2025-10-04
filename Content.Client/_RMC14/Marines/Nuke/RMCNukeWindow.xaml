@@ -1,0 +1,38 @@
+<controls:RMCNukeWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._RMC14.Marines.Nuke"
+    xmlns:userInterface="clr-namespace:Content.Client._RMC14.UserInterface"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    Title="Nuclear Ordnance Device"
+    MinSize="300 300">
+    <BoxContainer Orientation="Vertical">
+        <BoxContainer Orientation="Vertical">
+            <PanelContainer Margin="0 0 0 10">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#162031" BorderColor="#162031" BorderThickness="4" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer>
+                    <RichTextLabel Name="NukeTimer" Access="Public" Text="[bold]Decryption Timer: 10:00 Minutes" HorizontalExpand="True" HorizontalAlignment="Center"/>
+                    <RichTextLabel Name="NoAccess" Access="Public" Text="[bold]You do not have access to use this device." HorizontalExpand="True" HorizontalAlignment="Center" Visible="false"/>
+                </BoxContainer>
+            </PanelContainer>
+        </BoxContainer>
+
+        <BoxContainer Name="ButtonBox" Access="Public" HorizontalExpand="True">
+            <PanelContainer Margin="0 0 0 10" HorizontalExpand="True">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#162031" BorderColor="#162031" BorderThickness="4" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                    <RichTextLabel Name="DecryptionState" Access="Public" Text="Encryption Status: [color=red]Encrypted[/color]" HorizontalExpand="True" HorizontalAlignment="Center"/>
+                    <userInterface:BlueHorizontalSeparator Margin="0,3,0,3"/>
+                    <controls:RMCNukeButton Name="Safety" Access="Public"/>
+                    <controls:RMCNukeButton Name="Command" Access="Public"/>
+                    <controls:RMCNukeButton Name="Anchor" Access="Public"/>
+                    <controls:RMCNukeButton Name="Decryption" Access="Public"/>
+                    <controls:RMCNukeButton Name="Nuke" Access="Public"/>
+                </BoxContainer>
+            </PanelContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:RMCNukeWindow>

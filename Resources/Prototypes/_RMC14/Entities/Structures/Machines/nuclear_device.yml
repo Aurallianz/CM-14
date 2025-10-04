@@ -1,0 +1,42 @@
+- type: entity
+  parent: [CMBaseStructure, StructureWheeled]
+  id: RMCNuke
+  name: Nuclear Fission Explosive
+  description: Mainly intended as a demolition charge, this device, also called 'W-135', is primarily used by UNMC space vessels that don't have the equipment to remotely nuke planets from orbit. According to the Nuclear Regulatory Commission of the United Nations, this device have an estimated yield of 15 to 30 kilotonnes of TNT, enough to flatten everything that moves in a 6.30 kilometer, or 3.9 mile range. It also weighs 422 kilograms, or 930 pounds.
+  components:
+  - type: RMCNuke
+  - type: ActivatableUI
+    key: enum.RMCNukeUIKey.Key
+  - type: ActivatableUIBlacklist
+    blacklist:
+      components:
+      - Xeno
+  - type: UserInterface
+    interfaces:
+      enum.RMCNukeUIKey.Key:
+        type: RMCNukeBui
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    drawdepth: LargeObjects
+    sprite: _RMC14/Structures/Machines/nuke.rsi
+    state: nuke
+    offset: 0,0.5
+  - type: Clickable
+  - type: Corrodible
+    isCorrodible: false
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
