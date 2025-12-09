@@ -525,7 +525,7 @@ public sealed class RMCNukeSystem : EntitySystem
 
         while (queryMob.MoveNext(out var mobUid, out var mobStateComp))
         {
-            if(!_rmcPlanet.IsOnPlanet(uid.ToCoordinates()))
+            if(!_rmcPlanet.IsOnPlanet(mobUid.ToCoordinates()))
                 continue;
             var damage = new DamageSpecifier()
             {
