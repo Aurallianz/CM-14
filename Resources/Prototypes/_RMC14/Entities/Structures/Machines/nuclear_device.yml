@@ -17,6 +17,7 @@
         type: RMCNukeBui
   - type: Transform
     anchored: false
+    noLocalRotation: true
   - type: Sprite
     drawdepth: LargeObjects
     sprite: _RMC14/Structures/Machines/nuke.rsi
@@ -40,3 +41,8 @@
         layer:
         - MidImpassable
         - LowImpassable
+  - type: WarpPoint
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 3000
+    maxIntensity: 4

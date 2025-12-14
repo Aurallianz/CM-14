@@ -52,6 +52,12 @@ public sealed partial class RMCNukeComponent : Component
     public bool NukeAnnounceMinute = false;
 
     [DataField, AutoNetworkedField]
+    public TimeSpan NukeAnnounceFifteenTime = TimeSpan.FromSeconds(15);
+
+    [DataField, AutoNetworkedField]
+    public bool NukeAnnounceFifteen = false;
+
+    [DataField, AutoNetworkedField]
     public TimeSpan NukeAnnounceTenTime = TimeSpan.FromSeconds(10);
 
     [DataField, AutoNetworkedField]

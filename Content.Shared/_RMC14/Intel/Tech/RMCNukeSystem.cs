@@ -2,16 +2,21 @@ using System.Linq;
 using Content.Shared._RMC14.Areas;
 using Content.Shared._RMC14.Communications;
 using Content.Shared._RMC14.Dropship;
+using Content.Shared._RMC14.Explosion;
 using Content.Shared._RMC14.Marines.Announce;
 using Content.Shared._RMC14.Medical.Unrevivable;
 using Content.Shared._RMC14.Rules;
 using Content.Shared._RMC14.Xenonids;
 using Content.Shared._RMC14.Xenonids.Announce;
+using Content.Shared._RMC14.Xenonids.Construction;
+using Content.Shared._RMC14.Xenonids.Egg;
 using Content.Shared.Access.Systems;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
+using Content.Shared.Explosion.Components;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -40,6 +45,9 @@ public sealed class RMCNukeSystem : EntitySystem
     [Dependency] private readonly RMCUnrevivableSystem _unrevivable = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedDropshipSystem _dropship = default!;
+    [Dependency] private readonly SharedExplosionSystem _explosions = default!;
+    [Dependency] private readonly SharedRMCExplosionSystem _rmcExplosion = default!;
+
 
     private static readonly ProtoId<DamageTypePrototype> DamageTypeBlunt = "Blunt";
 
@@ -522,7 +530,6 @@ public sealed class RMCNukeSystem : EntitySystem
     private void Nuked(EntityUid uid, RMCNukeComponent nukeComp)
     {
         var queryMob = EntityQueryEnumerator<MobStateComponent>();
-
         while (queryMob.MoveNext(out var mobUid, out var mobStateComp))
         {
             if(!_rmcPlanet.IsOnPlanet(mobUid.ToCoordinates()))
@@ -540,6 +547,32 @@ public sealed class RMCNukeSystem : EntitySystem
             _unrevivable.MakeUnrevivable(mobUid);
             EnsureComp(mobUid, out RMCNukedComponent component);
         }
+
+        var queryPylon = EntityQueryEnumerator<HivePylonComponent>();
+        while (queryPylon.MoveNext(out var pylonUid, out var pylonComp))
+        {
+            if(!_rmcPlanet.IsOnPlanet(pylonUid.ToCoordinates()))
+                continue;
+            QueueDel(pylonUid);
+        }
+
+        var queryHive = EntityQueryEnumerator<HiveCoreComponent>();
+        while (queryHive.MoveNext(out var coreUid, out var coreComp))
+        {
+            if(!_rmcPlanet.IsOnPlanet(coreUid.ToCoordinates()))
+                continue;
+            QueueDel(coreUid);
+        }
+
+        var queryEgg = EntityQueryEnumerator<XenoEggComponent>();
+        while (queryEgg.MoveNext(out var eggUid, out var eggComp))
+        {
+            if(!_rmcPlanet.IsOnPlanet(eggUid.ToCoordinates()))
+                continue;
+            QueueDel(eggUid);
+        }
+
+        _rmcExplosion.TriggerExplosive(uid, true, radius: 160);
 
         nukeComp.Nuking = false;
         QueueDel(uid);
@@ -603,6 +636,12 @@ public sealed class RMCNukeSystem : EntitySystem
                     _marineAnnounce.AnnounceHighCommand($"WARNING. \n \nNUCLEAR EXPLOSIVE ONE MINUTE TO DETONATION.",  "ARES V3.2 Ordnance Manager");
                     _xenoAnnounce.AnnounceQueenMother($"The Hive killer is about to trigger, END THIS!");
                     nukeComp.NukeAnnounceMinute = true;
+                    Dirty(uid, nukeComp);
+                }
+                else if (!nukeComp.NukeAnnounceFifteen && nukeComp.NukeAt-time <= nukeComp.NukeAnnounceFifteenTime)
+                {
+                    RaiseLocalEvent(new RMCNukeAudioEvent());
+                    nukeComp.NukeAnnounceFifteen = true;
                     Dirty(uid, nukeComp);
                 }
                 else if (!nukeComp.NukeAnnounceTen && nukeComp.NukeAt-time <= nukeComp.NukeAnnounceTenTime)
