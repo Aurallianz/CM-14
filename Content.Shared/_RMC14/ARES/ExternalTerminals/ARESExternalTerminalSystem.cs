@@ -22,6 +22,7 @@ public sealed class ARESExternalTerminalSystem : EntitySystem
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly GunIFFSystem _iffSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
 
@@ -107,8 +108,7 @@ public sealed class ARESExternalTerminalSystem : EntitySystem
     {
         SetAres(ent);
         if (!_idCard.TryFindIdCard(args.Actor, out var idCard) || !TryComp<AccessComponent>(idCard, out var access) ||
-            !TryComp<ItemIFFComponent>(idCard, out var itemIff) || idCard.Comp.FullName == null ||
-            idCard.Comp._jobTitle == null || !itemIff.Factions.Contains(ent.Comp.Faction))
+            idCard.Comp.FullName == null || idCard.Comp._jobTitle == null || !_iffSystem.HasFaction(idCard, ent.Comp.Faction))
             return;
 
         _core.CreateARESLog(ent.Comp.Faction,
