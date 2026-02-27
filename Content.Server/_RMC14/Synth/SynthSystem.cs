@@ -1,4 +1,5 @@
 using Content.Server.Body.Systems;
+using Content.Shared._RMC14.Attachable.Events;
 using Content.Shared._RMC14.Humanoid;
 using Content.Shared._RMC14.Synth;
 using Content.Shared.Body.Components;
@@ -31,7 +32,7 @@ public sealed class SynthSystem : SharedSynthSystem
 
         var repOverrideComp = EnsureComp<RMCHumanoidRepresentationOverrideComponent>(ent);
         repOverrideComp.Species = ent.Comp.SpeciesName;
-        repOverrideComp.Age = ent.Comp.Generation;
+        repOverrideComp.Age = "w"; // Todo dont do this...
         Dirty(ent, repOverrideComp);
 
         if (!HasComp<BodyComponent>(ent.Owner))

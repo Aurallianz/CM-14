@@ -59,7 +59,7 @@
     - type: EquipSurvivorPreset
       preset: RMCSurvivorPresetHybrisaSynthTSEPA
     - type: Synth
-      generation: rmc-species-synth-generation-second
+      generation: RMCSynthGenTwo
   useLoadoutOfJob: RMCJobSyntheticColony # for inheritance
 
 - type: startingGear

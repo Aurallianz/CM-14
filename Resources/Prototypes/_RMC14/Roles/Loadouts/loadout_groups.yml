@@ -155,7 +155,7 @@
   - NeckerchiefGrayRMC
   - NeckerchiefTanRMC
   - NeckerchiefWhiteRMC
-  
+
 - type: loadoutGroup
   id: MasksRMCPVE
   name: rmc-loadout-group-masks
@@ -594,6 +594,12 @@
 
 # Synthetic
 - type: loadoutGroup
+  id: SynthGenerationRMC
+  name: Synthetic Generations
+  loadouts:
+  -
+
+- type: loadoutGroup
   id: SynthUniformRMC
   name: rmc-loadout-group-synthetic-uniform
   minLimit: 1
@@ -766,6 +772,15 @@
   - NeckerchiefGreenRMC
   - NeckerchiefWhiteRMC
   - NeckerchiefRedRMC
+
+- type: loadoutGroup
+  id: SynthGenRMC
+  name: Synth Generations
+  minLimit: 1
+  loadouts:
+  - RMCSynthGenOne
+  - RMCSynthGenTwo
+  - RMCSynthGenThree
 
 # Civilian
 - type: loadoutGroup

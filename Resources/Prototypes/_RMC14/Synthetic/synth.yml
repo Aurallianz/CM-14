@@ -1,0 +1,32 @@
+- type: entity
+  id: RMCSynthGenOne
+  name: wawa
+  components:
+  - type: SynthGeneration
+  - type: Skills
+    skills:
+      RMCSkillEndurance: 0
+      RMCSkillFirearms: 1
+      RMCSkillVehicles: 1
+
+- type: entity
+  id: RMCSynthGenTwo
+  name: wawawa
+  components:
+  - type: SynthGeneration
+  - type: Skills
+    skills:
+      RMCSkillEndurance: 0
+      RMCSkillFirearms: 2
+      RMCSkillVehicles: 1
+
+- type: entity
+  id: RMCSynthGenThree
+  name: wawawawa
+  components:
+  - type: SynthGeneration
+  - type: Skills
+    skills:
+      RMCSkillEndurance: 0
+      RMCSkillFirearms: 3
+      RMCSkillVehicles: 1

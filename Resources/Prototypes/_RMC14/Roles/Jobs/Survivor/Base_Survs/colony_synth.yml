@@ -66,7 +66,7 @@
         types:
           Blunt: 35
     - type: Synth
-      generation: rmc-species-synth-generation-second
+      generation: RMCSynthGenTwo
   hidden: true
   useLoadoutOfJob: RMCJobSyntheticColony # for inheritance
 

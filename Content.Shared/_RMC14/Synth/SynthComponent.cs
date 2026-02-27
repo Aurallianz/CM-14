@@ -13,7 +13,7 @@ using Content.Shared.Whitelist;
 namespace Content.Shared._RMC14.Synth;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedSynthSystem))]
+[Access(typeof(SharedSynthSystem), typeof(SharedSynthGenerationSystem))]
 public sealed partial class SynthComponent : Component
 {
     [DataField]
@@ -53,7 +53,7 @@ public sealed partial class SynthComponent : Component
     /// I.E. 1st generation, 3rd generation.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public LocId Generation = "rmc-species-synth-generation-third";
+    public EntProtoId<SynthGenerationComponent>? Generation;
 
     [DataField, AutoNetworkedField]
     public LocId FixedIdentityReplacement = "cm-chatsan-replacement-synth";
