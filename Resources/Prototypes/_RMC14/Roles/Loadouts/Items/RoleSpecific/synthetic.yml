@@ -422,20 +422,17 @@
 - type: loadout
   id: RMCSynthGenOne
   componentsAdd: true
-  dummyEntity: RMCLighter
   equipment:
     none: RMCSynthGenOne
 
 - type: loadout
   id: RMCSynthGenTwo
   componentsAdd: true
-  dummyEntity: RMCZippoGold
   equipment:
     none: RMCSynthGenTwo
 
 - type: loadout
   id: RMCSynthGenThree
   componentsAdd: true
-  dummyEntity: RMCZippoExec
   equipment:
     none: RMCSynthGenThree

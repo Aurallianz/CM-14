@@ -49,12 +49,6 @@ public sealed partial class SynthComponent : Component
     [DataField, AutoNetworkedField]
     public LocId SpeciesName = "rmc-species-name-synth";
 
-    /// <summary>
-    /// I.E. 1st generation, 3rd generation.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public EntProtoId<SynthGenerationComponent>? Generation;
-
     [DataField, AutoNetworkedField]
     public LocId FixedIdentityReplacement = "cm-chatsan-replacement-synth";
 

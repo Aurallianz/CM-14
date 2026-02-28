@@ -594,12 +594,6 @@
 
 # Synthetic
 - type: loadoutGroup
-  id: SynthGenerationRMC
-  name: Synthetic Generations
-  loadouts:
-  -
-
-- type: loadoutGroup
   id: SynthUniformRMC
   name: rmc-loadout-group-synthetic-uniform
   minLimit: 1
