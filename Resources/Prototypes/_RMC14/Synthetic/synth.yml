@@ -81,22 +81,22 @@
       RMCSkillDomestics: 2
       RMCSkillNavigations: 1
 
-- type: entity
-  id: RMCARESWorker
-  name: ARES Worker
-  components:
-  - type: SynthGeneration
-    generation: RMCARESWorker
-  - type: Skills
-    skills:
-      RMCSkillCqc: 5
-      RMCSkillEngineer: 4
-      RMCSkillConstruction: 3
-      RMCSkillFirearms: 2
-      RMCSkillMeleeWeapons: 2
-      RMCSkillPolice: 2
-      RMCSkillFireman: 2
-      RMCSkillPowerLoader: 2
-      RMCSkillVehicles: 2
-      RMCSkillDomestics: 2
-      RMCSkillEndurance: 1
+#- type: entity
+#  id: RMCARESWorker
+#  name: ARES Worker
+#  components:
+#  - type: SynthGeneration
+#    generation: RMCARESWorker
+#  - type: Skills
+#    skills:
+#      RMCSkillCqc: 5
+#      RMCSkillEngineer: 4
+#      RMCSkillConstruction: 3
+#      RMCSkillFirearms: 2
+#      RMCSkillMeleeWeapons: 2
+#      RMCSkillPolice: 2
+#      RMCSkillFireman: 2
+#      RMCSkillPowerLoader: 2
+#      RMCSkillVehicles: 2
+#      RMCSkillDomestics: 2
+#      RMCSkillEndurance: 1

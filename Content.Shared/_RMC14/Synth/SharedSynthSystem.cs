@@ -37,6 +37,8 @@ public abstract class SharedSynthSystem : EntitySystem
     [Dependency] private readonly RMCStatusEffectSystem _rmcStatusEffects = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly SharedSynthGenerationSystem _synthGeneration = default!;
+
 
     public override void Initialize()
     {
@@ -55,6 +57,7 @@ public abstract class SharedSynthSystem : EntitySystem
     private void OnMapInit(Entity<SynthComponent> ent, ref MapInitEvent args)
     {
         MakeSynth(ent);
+        _synthGeneration.SynthStartup(ent);
     }
 
     protected virtual void MakeSynth(Entity<SynthComponent> ent)

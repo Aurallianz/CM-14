@@ -12,4 +12,9 @@ public sealed partial class SynthGenerationComponent : Component
     [DataField, AutoNetworkedField]
     public EntProtoId<SynthGenerationComponent>? Generation;
 
+    [DataField, AutoNetworkedField]
+    public EntProtoId GenerationAction = "ActionChooseGen";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? SelectGenerationActionEntity;
 }

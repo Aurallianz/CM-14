@@ -15,8 +15,6 @@ public sealed class SynthSystem : SharedSynthSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<SynthComponent, ComponentStartup>(OnCompStartup);
     }
 
     protected override void MakeSynth(Entity<SynthComponent> ent)
@@ -24,7 +22,7 @@ public sealed class SynthSystem : SharedSynthSystem
         base.MakeSynth(ent);
     }
 
-    private void OnCompStartup(Entity<SynthComponent> ent, ref ComponentStartup args)
+    private void OnCompStartup(Entity<SynthComponent> ent)
     {
         if (!TryComp<SpriteComponent>(ent.Owner, out var sprite))
             return;
