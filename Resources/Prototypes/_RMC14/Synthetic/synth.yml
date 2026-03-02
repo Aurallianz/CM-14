@@ -1,6 +1,6 @@
 - type: entity
   id: RMCSynthGenOne
-  name: Generation One Synthetic
+  name: Generation One
   components:
   - type: SynthGeneration
     generation: RMCSynthGenOne
@@ -29,7 +29,7 @@
 
 - type: entity
   id: RMCSynthGenTwo
-  name: Generation Two Synthetic
+  name: Generation Two
   components:
   - type: SynthGeneration
     generation: RMCSynthGenTwo
@@ -55,7 +55,7 @@
 
 - type: entity
   id: RMCSynthGenThree
-  name: Generation Three Synthetic
+  name: Generation Three
   components:
   - type: SynthGeneration
     generation: RMCSynthGenThree

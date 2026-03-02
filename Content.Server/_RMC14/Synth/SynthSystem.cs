@@ -7,6 +7,7 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._RMC14.Synth;
 
@@ -15,6 +16,8 @@ public sealed class SynthSystem : SharedSynthSystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+
 
     protected override void MakeSynth(Entity<SynthComponent> ent)
     {
@@ -32,7 +35,10 @@ public sealed class SynthSystem : SharedSynthSystem
 
         var repOverrideComp = EnsureComp<RMCHumanoidRepresentationOverrideComponent>(ent);
         repOverrideComp.Species = ent.Comp.SpeciesName;
-        repOverrideComp.Age = "w"; // Todo dont do this...
+        if(TryComp<SynthGenerationComponent>(ent.Owner, out var comp) && _prototype.TryIndex(comp.Generation, out var proto))
+        {
+            repOverrideComp.Age = proto.Name;
+        }
         Dirty(ent, repOverrideComp);
 
         if (!HasComp<BodyComponent>(ent.Owner))
