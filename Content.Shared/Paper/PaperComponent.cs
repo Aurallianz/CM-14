@@ -8,6 +8,8 @@ namespace Content.Shared.Paper;
 public sealed partial class PaperComponent : Component
 {
     [DataField, AutoNetworkedField]
+    public Color TextColor = new(25, 25, 25);
+    [DataField, AutoNetworkedField]
     public Color Color = Color.White;
 
     [DataField, AutoNetworkedField]
