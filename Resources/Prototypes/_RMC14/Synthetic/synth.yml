@@ -26,6 +26,14 @@
   - type: RMCLeapProtection
     inherentStunDuration: 3
     fullProtection: true
+  - type: CMArmor
+    melee: 15
+    bullet: 15
+    bio: 15
+    explosionArmor: 15
+  - type: MovementSpeedModifier
+    SprintSpeedModifier: 0.725
+    WalkSpeedModifier: 0.725
 
 - type: entity
   id: RMCSynthGenTwo
@@ -80,6 +88,11 @@
       RMCSkillIntel: 2
       RMCSkillDomestics: 2
       RMCSkillNavigations: 1
+  - type: CMArmor
+    melee: -15
+    bullet: -15
+    bio: -15
+    explosionArmor: -15
 
 #- type: entity
 #  id: RMCARESWorker
